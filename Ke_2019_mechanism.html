@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Noto Sans KR', 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slide {
+            width: 1680px;
+            min-height: 720px;
+            position: relative;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            margin: 20px 0;
+        }
+        .header {
+            background: #005b96;
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .title {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .authors {
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+        .journal {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .summary-container {
+            background: #f0f5fa;
+            padding: 12px 30px;
+            border-bottom: 1px solid #e1e5e8;
+            max-width: 100%;
+        }
+        .summary-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #005b96;
+        }
+        .summary {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 15px;
+            padding: 15px;
+            flex: 1;
+        }
+        .section {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            max-height: 320px;
+            overflow-y: auto;
+        }
+        .section-title {
+            color: #005b96;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #005b96;
+        }
+        .section-content {
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        .term {
+            font-weight: bold;
+            color: #005b96;
+        }
+        .eng {
+            color: #666;
+            font-style: italic;
+        }
+        .bullet {
+            margin-left: 8px;
+            text-indent: -8px;
+            padding-left: 8px;
+            margin-bottom: 6px;
+        }
+        .bullet:before {
+            content: "• ";
+            color: #005b96;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <div class="title">Assembly Dynamics of a Large Space Modular Satellite Antenna</div>
+            <div class="authors">Ke Li, Qiang Tian, Junwei Shi, Dali Liu</div>
+            <div class="journal">Mechanism and Machine Theory, Vol. 142, 2019, Article 103601</div>
+        </div>
+
+        <div class="summary-container">
+            <div class="summary-title">논문 요약</div>
+            <div class="summary">
+                본 연구는 대형 모듈형 위성 안테나의 <span class="term">자율 궤도상 조립(Autonomous on-orbit assembly)</span>을 위한 <span class="term">동역학-최적화 방법론</span>을 제안한다. <span class="term">자연 좌표 공식(NCF)</span>과 <span class="term">절대 결절 좌표 공식(ANCF)</span>을 결합하여 강체-유연체 모델을 구성하고, <span class="term">라틴 하이퍼큐브 샘플링-입자군 최적화(LHS-PSO)</span>로 로봇 관절 궤적을 설계하여 <span class="term">자세 동요(Attitude disturbance)</span>를 최소화하였다. 충돌 방지를 위해 <span class="term">방향성 경계 상자(OBB)</span> 검사를 포함하였으며, 수치해석 결과 최적 궤적을 사용하면 안테나 2개 조립 후 위성 자세가 최초 상태로 거의 복귀함을 확인하였다.
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- Introduction -->
+            <div class="section">
+                <div class="section-title">Introduction: 연구 동기</div>
+                <div class="section-content">
+                    <div class="bullet"><span class="term">초대형 우주 구조물(Large space structures)</span>의 필요성이 증가하며, 단일 전개 방식만으로는 규격 한계를 초과함.</div>
+                    <div class="bullet">고정밀·고위험 작업에서 <span class="term">우주 유인 조립</span>은 비용·안전성 문제로 부적합.</div>
+                    <div class="bullet"><span class="term">자율 로봇 조립</span>은 연료 소모와 인적 위험을 줄이는 핵심 대안.</div>
+                    <div class="bullet">조립 중 로봇 운동이 모선의 <span class="term">자세 동요</span>를 유발, 임무 실패 위험 증가.</div>
+                    <div class="bullet">정확한 <span class="term">강·유연체 결합 동역학 모델</span>이 필수적.</div>
+                    <div class="bullet">효율적인 <span class="term">경로 최적화(Path optimization)</span> 기법이 필요.</div>
+                    <div class="bullet">충돌 회피와 궤적 부드러움 확보가 추가 과제.</div>
+                </div>
+            </div>
+
+            <!-- Related Works -->
+            <div class="section">
+                <div class="section-title">Related Works: 관련 연구</div>
+                <div class="section-content">
+                    <div class="bullet">ETS-VII(1997), DARPA <span class="eng">Phoenix</span>, DLR <span class="eng">iBOSS</span> 등 초기 궤도상 조립 실증.</div>
+                    <div class="bullet"><span class="term">Disturbance Map(DM)</span>·<span class="term">Enhanced DM</span>으로 자세 영향 예측(Dubowsky 등).</div>
+                    <div class="bullet"><span class="term">비홀로노믹 제어</span> 기반 경로 기획(Papadopoulos 등).</div>
+                    <div class="bullet"><span class="term">신경망, 유전자 알고리즘</span>을 이용한 최소 동요 연구.</div>
+                    <div class="bullet"><span class="eng">Multi-swarm PSO</span>·<span class="eng">Hybrid PSO-SA</span>로 수렴성 향상.</div>
+                    <div class="bullet"><span class="term">OBB+SAT</span> 기반 충돌 탐지(Abainia & Ali).</div>
+                    <div class="bullet">기존 연구는 주로 <span class="term">다중 강체 모델</span>로 유연체 효과 미고려.</div>
+                </div>
+            </div>
+
+            <!-- Method -->
+            <div class="section">
+                <div class="section-title">Method: 새로운 접근 방법</div>
+                <div class="section-content">
+                    <div class="bullet">강체 → <span class="term">NCF(Natural Coordinate Formulation)</span>, 유연체 → <span class="term">ANCF(Absolute Nodal Coordinate Formulation)</span>로 모델 구성.</div>
+                    <div class="bullet"><span class="term">Generalized-α</span> 적분법으로 수치 안정성 확보.</div>
+                    <div class="bullet">7-DOF 로봇팔의 <span class="term">매개변수 역기구학(Parameterised IK)</span> 적용.</div>
+                    <div class="bullet">관절 궤적을 <span class="term">제한 사인 다항식(Bounded sine polynomial)</span>으로 표현.</div>
+                    <div class="bullet"><span class="term">LHS-PSO</span>로 궤적 파라미터(a<sub>i6</sub>) 최적화.</div>
+                    <div class="bullet">적합도 함수에 <span class="term">자세 오차 1-노름</span>과 궤적 부드러움 포함(가중치 τ=10<sup>7</sup>).</div>
+                    <div class="bullet"><span class="term">OBB 충돌 검사</span>로 비물리적 궤적 제거.</div>
+                </div>
+            </div>
+
+            <!-- Experiment -->
+            <div class="section">
+                <div class="section-title">Experiment: 실험 방법과 결과</div>
+                <div class="section-content">
+                    <div class="bullet">Case 1: 7-DOF 로봇팔 경로(10 s) → 최종 자세 오차 &lt; 3×10<sup>−5</sup> °.</div>
+                    <div class="bullet">Case 2: 2개 안테나 모듈 단계적 조립(총 67 s).</div>
+                    <div class="bullet">인구 20, 반복 100, 샘플 h<sub>0</sub>=5로 LHS-PSO 실행.</div>
+                    <div class="bullet">강체 vs 강·유연체 비교: 유연체는 중간 동요↑, 최적화 갱신 필요.</div>
+                    <div class="bullet">최종 위성 Euler 각: |α,β,γ| &lt; 0.03° (강·유연체 모델).</div>
+                    <div class="bullet">엔드-이펙터 위치 오차 &lt; 6 µm.</div>
+                    <div class="bullet">충돌 없음, 최적화 수렴 속도 기존 PSO 대비 20% 향상.</div>
+                </div>
+            </div>
+
+            <!-- Discussion -->
+            <div class="section">
+                <div class="section-title">Discussion: 결과의 해석</div>
+                <div class="section-content">
+                    <div class="bullet">유연 링크는 중간 단계에서 자세 변동을 증폭시키나, 최종 자세는 회복 가능.</div>
+                    <div class="bullet">가중치 <span class="term">τ</span> 선택이 자세 최소화 성능에 결정적.</div>
+                    <div class="bullet"><span class="term">OBB 충돌 회피</span>가 탐색 공간을 대폭 축소, 계산 효율 향상.</div>
+                    <div class="bullet"><span class="term">LHS</span> 샘플링이 입자 다양성 확보 → 지역 최적 회피.</div>
+                    <div class="bullet">다중 DOF 로봇에도 적용 가능한 <span class="term">스케일러블 방법론</span>.</div>
+                    <div class="bullet">계산 시간의 90%는 동역학 적분이 차지 → 병렬화 필요.</div>
+                </div>
+            </div>
+
+            <!-- Conclusion -->
+            <div class="section">
+                <div class="section-title">Conclusion: 최종 요약</div>
+                <div class="section-content">
+                    <div class="bullet">제안된 <span class="term">강·유연체-최적화 통합 프레임워크</span>가 모듈형 안테나 조립에 유효함을 검증.</div>
+                    <div class="bullet">최적화된 궤적으로 위성 자세 동요를 무시할 수준으로 억제.</div>
+                    <div class="bullet">유연체 효과를 포함해야 실제 임무에서의 <span class="term">로버스트성(Robustness)</span> 확보 가능.</div>
+                    <div class="bullet">방법론은 <span class="term">광학 망원경, 대형 태양전지판</span> 등 다양한 구조에 확장 가능.</div>
+                    <div class="bullet">향후 과제: 대규모 모듈 수 증가, 실제 궤도 환경 적용, 실험 검증.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
