@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans KR', 'Arial', sans-serif;
+            margin: 0; padding: 0;
+            background: #f5f5f5; color: #333;
+            display: flex; justify-content: center; align-items: center;
+            min-height: 100vh;
+        }
+        .slide {
+            width: 1680px; min-height: 720px;
+            background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex; flex-direction: column; margin: 20px 0;
+        }
+        .header { background: #005b96; color: #fff; padding: 20px 30px; }
+        .title { font-size: 26px; font-weight: 700; margin-bottom: 8px; }
+        .authors { font-size: 15px; margin-bottom: 4px; }
+        .journal { font-size: 14px; opacity: .9; }
+        .summary-container { background: #f0f5fa; padding: 12px 30px; border-bottom: 1px solid #e1e5e8; }
+        .summary-title { font-size: 16px; font-weight: 700; color: #005b96; margin-bottom: 5px; }
+        .summary { font-size: 14px; line-height: 1.55; }
+        .content { display: grid; grid-template-columns: repeat(3,1fr); grid-template-rows: repeat(2,auto); gap: 15px; padding: 15px; flex:1; }
+        .section { background:#fff; border:1px solid #e0e0e0; border-radius:6px; padding:12px; box-shadow:0 2px 4px rgba(0,0,0,.05); max-height:320px; overflow-y:auto; }
+        .section-title { color:#005b96; font-size:16px; font-weight:700; margin-bottom:10px; padding-bottom:5px; border-bottom:2px solid #005b96; }
+        .section-content { font-size:13px; line-height:1.6; }
+        .bullet { margin-left:8px; text-indent:-8px; padding-left:8px; margin-bottom:6px; }
+        .bullet:before { content:"• "; color:#005b96; }
+        .term { font-weight:700; color:#005b96; }
+        .eng { color:#666; font-style:italic; }
+    </style>
+</head>
+<body>
+<div class="slide">
+    <div class="header">
+        <div class="title">Optimization of a Tapered Deployable Space Structure</div>
+        <div class="authors">Srivatsa Harish, Daisaku Inoyama, Tom Stoumbos, Rakesh K. Kapania</div>
+        <div class="journal">AIAA SciTech Forum 2025, Paper 2025‑2660 (Northrop Grumman & Virginia Tech)</div>
+    </div>
+
+    <div class="summary-container">
+        <div class="summary-title">논문 요약</div>
+        <div class="summary">
+            본 논문은 <span class="term">테이퍼형 렌티큘러 복합재 빔(deployable lenticular composite beam)</span>의 설계 최적화를 통해 랩핑 시 <span class="term">저장 변형 에너지(strain energy)</span>와 전개 동특성을 동시에 최소화하였다. <span class="term">Abaqus CAE</span>와 <span class="term">HEEDS MDO</span>를 연동하여 <span class="term">SHERPA</span> 하이브리드 알고리즘으로 형상‑재료‑접합 파라미터를 탐색하였고, <span class="term">Hashin 파손 기준(Hashin damage criterion)</span>으로 구조 생존성을 검증하였다. 최적 설계는 무게 0.43 lb, 랩핑 에너지 10.8 lbf·in, 전개 시 본체 평균 회전률 0.02 °/s를 달성하며, <span class="term">기본 고유주파수(fundamental frequency)</span> 0.91 Hz로 임무 요구를 만족한다.
+        </div>
+    </div>
+
+    <div class="content">
+        <!-- Introduction -->
+        <div class="section">
+            <div class="section-title">Introduction: 연구 동기</div>
+            <div class="section-content">
+                <div class="bullet">소형 위성의 페어링 부피 제한 → <span class="term">가변형 구조(deployable structures)</span> 탑재 필수.</div>
+                <div class="bullet">기존 <span class="term">기계식 전개(mechanically deployed)</span> 안테나는 힌지·액추에이터로 인해 <span class="term">중량(weight)</span>·<span class="term">실패 모드</span> 증가.</div>
+                <div class="bullet"><span class="term">저장 에너지 전개(strain‑energy deployment)</span>는 단순·경량이나 전개 동역학 제어가 난제.</div>
+                <div class="bullet">렌티큘러(튤립형) 단면은 랩핑 시 납작하게 압축 가능, 전개 시 높은 굽힘 강성 확보.</div>
+                <div class="bullet">과거 연구는 균일 단면만 고려 → 본 연구는 <span class="term">축방향 테이퍼(chordwise taper)</span> 도입.</div>
+                <div class="bullet">형상·재료·접합 파라미터 동시 최적화를 위한 자동화 <span class="term">MDO(Multi‑Disciplinary Optimization)</span> 필요.</div>
+                <div class="bullet">전개 과정의 <span class="term">위성 자세 교란(spacecraft attitude disturbance)</span> 한계(3 °/s) 충족 목표.</div>
+            </div>
+        </div>
+
+        <!-- Related Works -->
+        <div class="section">
+            <div class="section-title">Related Works: 관련 연구</div>
+            <div class="section-content">
+                <div class="bullet">Northrop Grumman <span class="eng">Astro Aerospace</span> 기계식 리플렉터 안테나 라인업. citeturn1file0</div>
+                <div class="bullet">NASA JPL <span class="eng">HabEx Starshade</span> 프로젝트의 랩핑형 페탈 구조.</div>
+                <div class="bullet">MARSIS 이중 렌티큘러 붐 전개 실패 사례 → 감쇠 추정 오차. </div>
+                <div class="bullet">Winter 등: 롤식 태양전지판·형상기억 합금 롱거런 전개 연구.</div>
+                <div class="bullet">Fink·Tulloss: 렌티큘러 형상 및 재료 최적화 1·2세대 연구.</div>
+                <div class="bullet">Kwak 등: 반사판 패널 질량 최소화 반복 최적화.</div>
+                <div class="bullet"><span class="eng">Thin‑ply</span> 복합재 굽힘 한계(Francis et al.) 및 <span class="term">Helius micromechanics</span> 기반 강도 추정.</div>
+            </div>
+        </div>
+
+        <!-- Method -->
+        <div class="section">
+            <div class="section-title">Method: 새로운 접근 방법</div>
+            <div class="section-content">
+                <div class="bullet">형상 변수: <span class="term">R1, R2, θ</span> 및 <span class="term">테이퍼 비(s)</span>로 루트‑팁 단면 결정.</div>
+                <div class="bullet">재료 변수: <span class="term">섬유‑수지 조합(fiber/matrix)</span>, <span class="term">충진율(filler volume ratio)</span>, <span class="term">플라이 두께(ply thickness)</span>.</div>
+                <div class="bullet">접합 변수: 힌지 <strong>강성(k)</strong>·<strong>감쇠(d)</strong> 최적화하여 전개 감쇠 조절.</div>
+                <div class="bullet"><span class="term">SHERPA</span> 알고리즘이 전역·국부 탐색 병행, 100 평가로 수렴.</div>
+                <div class="bullet">제약: 무게 &lt; 3 lb, 1차 모드 &gt; 0.5 Hz, 몸체 회전 &lt; 3 °/s, <span class="term">Hashin</span> 손상 &lt; 0.7.</div>
+                <div class="bullet">목적함수: w/ w<sub>0</sub>, U/ U<sub>0</sub>, δ<sub>tip</sub>/ δ<sub>0</sub> 가중 합 최소화.</div>
+                <div class="bullet">모델: Abaqus Explicit 랩핑(1 s) + 전개(100 s), Standard Modal 4‑빔 어셈블.</div>
+            </div>
+        </div>
+
+        <!-- Experiment -->
+        <div class="section">
+            <div class="section-title">Experiment: 실험 방법과 결과</div>
+            <div class="section-content">
+                <div class="bullet">총 94 디자인 평가 → 34 개 제약 만족, 19 개 제조 가능(plausible).</div>
+                <div class="bullet">최적 빔: 무게 0.43 lb(−73 %), 에너지 10.8 lbf·in(−99 %).</div>
+                <div class="bullet">테이퍼 비 0.78 → 팁 단면 22 % 축소, 전개 피크 변위 1″ 미만.</div>
+                <div class="bullet">Hashin 지표: 섬유 장력 0.02, 압축 0.042 → 1 미만 안전.</div>
+                <div class="bullet">실험적 상관: ply 두께 ↑ ⇒ 무게·에너지 ↑, 전개 변위 ↓.</div>
+                <div class="bullet">테이퍼 심화(s ↓) ⇒ 전개 변위 ↑ → 완만한 테이퍼가 유리.</div>
+            </div>
+        </div>
+
+        <!-- Discussion -->
+        <div class="section">
+            <div class="section-title">Discussion: 결과의 해석</div>
+            <div class="section-content">
+                <div class="bullet">무게와 저장 에너지는 선형 양의 상관; 경량화가 곧 에너지 감소.</div>
+                <div class="bullet">그러나 에너지↓ → 관성↓ → 전개 진동 증가 → 목적 함수 균형 필요.</div>
+                <div class="bullet">테이퍼 비가 0.75 이상일 때 전개 안정성·제조 용이성 동시 확보.</div>
+                <div class="bullet"><span class="term">플라이 두께 0.0014–0.003 in</span> 범위에서 <span class="eng">thin‑ply</span> 제조 가능.</div>
+                <div class="bullet">전개 회전률 0.02 °/s → 4 N·m·s RWAs로 충분히 제어 가능.</div>
+                <div class="bullet">병목: Explicit 해석 시간 → 클러스터 활용·<span class="term">서퍼스 모델(response surface)</span> 예고.</div>
+            </div>
+        </div>
+
+        <!-- Conclusion -->
+        <div class="section">
+            <div class="section-title">Conclusion: 최종 요약</div>
+            <div class="section-content">
+                <div class="bullet">형상‑재료‑접합 동시 최적화로 테이퍼 빔 설계 로드맵 제시.</div>
+                <div class="bullet">임무 제약 및 구조 안전성 동시 충족, 위성 자세 교란 최소화.</div>
+                <div class="bullet">완만한 테이퍼와 얇은 플라이가 경량·저에너지 설계에 핵심.</div>
+                <div class="bullet">방법론은 태양전지 롤아웃 붐·대형 전개 안테나 등 확장 가능.</div>
+                <div class="bullet">향후: 재료 데이터베이스 확대, 실험 검증 및 궤도 비행 시연 계획.</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
