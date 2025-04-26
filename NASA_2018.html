@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Noto Sans KR', 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slide {
+            width: 1680px;
+            min-height: 720px;
+            position: relative;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            margin: 20px 0;
+        }
+        .header {
+            background: #005b96;
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .title {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .authors {
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+        .journal {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .summary-container {
+            background: #f0f5fa;
+            padding: 12px 30px;
+            border-bottom: 1px solid #e1e5e8;
+            max-width: 100%;
+        }
+        .summary-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #005b96;
+        }
+        .summary {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 15px;
+            padding: 15px;
+            flex: 1;
+        }
+        .section {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            max-height: 320px;
+            overflow-y: auto;
+        }
+        .section-title {
+            color: #005b96;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #005b96;
+        }
+        .section-content {
+            font-size: 13px;
+            line-height: 1.6;
+            overflow-y: visible;
+        }
+        .term {
+            font-weight: bold;
+            color: #005b96;
+        }
+        .bullet {
+            margin-left: 8px;
+            text-indent: -8px;
+            padding-left: 8px;
+            margin-bottom: 6px;
+        }
+        .bullet:before {
+            content: "• ";
+            color: #005b96;
+        }
+        .eng {
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <div class="title">Mechanism Design and Testing of a Self-Deploying Structure Using Flexible Composite Tape Springs</div>
+            <div class="authors">Joseph N. Footdale, Thomas W. Murphey</div>
+            <div class="journal">NASA Technical Report, AFRL Space Vehicles Directorate</div>
+        </div>
+
+        <div class="summary-container">
+            <div class="summary-title">논문 요약</div>
+            <div class="summary">
+                유연 복합재 테이프 스프링을 사용하여 자가전개형 우주 구조물을 설계하고 실험적으로 검증하였다. 기계적 동기화 없이 동시 전개가 가능한 구조로, 복합재를 활용하여 경량화와 효율성을 크게 향상시켰다.
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <div class="section-title">Introduction: 연구 동기</div>
+                <div class="section-content">
+                    <div class="bullet">우주 구조물의 포장효율성과 경량화 요구 증가</div>
+                    <div class="bullet">기존 힌지 및 잠금장치의 복잡성과 무게 문제 해결 필요성</div>
+                    <div class="bullet">유연 복합재(FRP) 특유의 높은 비강성과 낮은 무게 장점 활용</div>
+                    <div class="bullet">외부 동력 없이 자가전개 가능성 탐구</div>
+                    <div class="bullet">3차원 구조의 동시 전개 요구 충족</div>
+                    <div class="bullet">기존 전개 메커니즘 대비 구조적 간소화 목표</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Related Works: 관련 연구</div>
+                <div class="section-content">
+                    <div class="bullet">Air Force Research Laboratory의 FRP 기반의 전개형 구조 연구 (Mejia-Ariza et al., 2010)</div>
+                    <div class="bullet">Motor-less deployment bi-stable tape spring 연구 (Jeon & Murphey, 2011)</div>
+                    <div class="bullet">DECSMAR 구조물의 실험 및 수치해석 (Pollard et al., 2007)</div>
+                    <div class="bullet">Tape springs의 배치 및 안정성 연구 (Seffen & Pellegrino, 1999)</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Method: 새로운 접근 방법</div>
+                <div class="section-content">
+                    <div class="bullet">복합재 테이프 스프링을 중심으로 한 허브 설계</div>
+                    <div class="bullet">테이프 스프링의 자가 전개 특성 활용</div>
+                    <div class="bullet">기계적 동기화 없이 동시 전개 가능 구조 설계</div>
+                    <div class="bullet">허브 디스크 및 테이프 스프링 결합 방법 개선</div>
+                    <div class="bullet">제약 및 해제 메커니즘의 간소화</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Experiment: 실험 방법과 결과</div>
+                <div class="section-content">
+                    <div class="bullet">큐브샛 크기의 텔레스코프 프로토타입 설계 및 제작</div>
+                    <div class="bullet">초기 실험에서 중력 보정의 필요성 확인</div>
+                    <div class="bullet">완벽한 동기화 전개가 핵심으로 확인됨</div>
+                    <div class="bullet">전개 과정 중 테이프 스프링의 토크 여유 확보</div>
+                    <div class="bullet">성공적인 자가 전개 및 반복 실험 검증</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Discussion: 결과의 해석</div>
+                <div class="section-content">
+                    <div class="bullet">중력 영향 및 기생 토크 고려 필요성 강조</div>
+                    <div class="bullet">테이프 스프링의 구조적 손상 미미 확인</div>
+                    <div class="bullet">전개 속도 조절 메커니즘 추가 연구 필요성 지적</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Conclusion: 최종 요약</div>
+                <div class="section-content">
+                    <div class="bullet">유연 복합재 테이프 스프링의 우수성 입증</div>
+                    <div class="bullet">기계적 동기화 없이도 안정적 전개 가능</div>
+                    <div class="bullet">추가적인 중력 보상 실험 및 전개 속도 제어 기술 연구 필요성 강조</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
