@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html {scroll-behavior: smooth;}
+        body {font-family: 'Noto Sans KR', 'Arial', sans-serif; margin: 0; padding: 0; background: #f5f5f5; color: #333; display: flex; justify-content: center; align-items: center; min-height: 100vh;}
+        .slide {width: 1680px; min-height: 720px; background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.1); display: flex; flex-direction: column; margin: 20px 0;}
+        .header {background: #005b96; color: white; padding: 20px 30px; display: flex; flex-direction: column; box-sizing: border-box;}
+        .title {font-size: 26px; font-weight: bold; margin-bottom: 8px;}
+        .authors, .journal {font-size: 15px; opacity: 0.9;}
+        .summary-container {background: #f0f5fa; padding: 12px 30px; border-bottom: 1px solid #e1e5e8;}
+        .summary-title {font-size: 16px; font-weight: bold; margin-bottom: 5px; color: #005b96;}
+        .summary {font-size: 14px; line-height: 1.5;}
+        .content {display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 15px; flex: 1;}
+        .section {background: white; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px; overflow-y: auto;}
+        .section-title {color: #005b96; font-size: 16px; font-weight: bold; margin-bottom: 10px; border-bottom: 2px solid #005b96;}
+        .section-content {font-size: 13px; line-height: 1.6;}
+        .term {font-weight: bold; color: #005b96;}
+        .bullet {margin-left: 8px; text-indent: -8px; padding-left: 8px; margin-bottom: 6px;}
+        .bullet:before {content: "• "; color: #005b96;}
+        .eng {color: #666; font-style: italic;}
+    </style>
+</head>
+<body>
+<div class="slide">
+    <div class="header">
+        <div class="title">Mechanism Design and Testing of a Self-Deploying Structure Using Flexible Composite Tape Springs</div>
+        <div class="authors">Joseph N. Footdale, Thomas W. Murphey</div>
+        <div class="journal">NASA GSFC Technical Report, GSFC_8929_TN14675-1</div>
+    </div>
+
+    <div class="summary-container">
+        <div class="summary-title">논문 요약</div>
+        <div class="summary">
+            본 연구는 유연 복합재료 테이프 스프링을 이용한 자가 전개형 구조물의 설계 및 시험을 다룬다. 기존의 복잡한 기계적 동기화 장치 없이 3차원으로 동시 전개되는 구조를 실험적으로 입증하며, 간단하고 효율적인 우주 전개 구조물 설계를 위한 유연 복합재료의 높은 활용 가능성을 제시하였다.
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="section">
+            <div class="section-title">Introduction: 연구 동기</div>
+            <div class="section-content">
+                <div class="bullet">우주망원경의 효율적이고 간편한 전개 구조 필요성</div>
+                <div class="bullet">기존 전개 구조물의 복잡성, 높은 비용 문제 해결 필요성</div>
+                <div class="bullet">경량화와 포장 효율의 중요성</div>
+                <div class="bullet">복합재료(FRP)의 높은 변형 성능과 질량 대비 강성 활용 가능성</div>
+                <div class="bullet">자체 변형 에너지를 이용한 수동적 전개 시스템 설계 가능성</div>
+                <div class="bullet">초소형 위성(CubeSat) 규모의 응용 확장 가능성 탐구</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Related Works: 관련 연구</div>
+            <div class="section-content">
+                <div class="bullet">대형 회전 플렉스 힌지를 활용한 전개식 트러스 구조 개발 (Mejia-Ariza et al., 2010)</div>
+                <div class="bullet">양안정성 테이프 스프링을 이용한 전개형 붐 연구 (Murphey et al., 2010)</div>
+                <div class="bullet">모터 없는 큐브위성 붐 설계 및 해석 (Jeon et al., 2011)</div>
+                <div class="bullet">DECSMAR 구조의 전개성능 연구 (Pollard et al., 2007)</div>
+                <div class="bullet">STEM 부품의 기본 역학 연구 (Rimrott et al., 1998)</div>
+                <div class="bullet">얇은 복합재 테이프 스프링의 대변형 굽힘 연구 (Peterson et al., 2013)</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Method: 새로운 접근 방법</div>
+            <div class="section-content">
+                <div class="bullet">복합재료 테이프 스프링을 사용한 3차원 동시 전개 구조</div>
+                <div class="bullet">기계적 동기화 장치 없는 자율적 전개</div>
+                <div class="bullet">테이프 스프링의 라미네이트 구조 최적화</div>
+                <div class="bullet">축 방향 중립 축 일치로 잠금 장치 생략</div>
+                <div class="bullet">허브 장치의 간결한 설계로 무게와 복잡성 최소화</div>
+                <div class="bullet">점진적 클리어런스 절단으로 안정적인 전개</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Experiment: 실험 방법과 결과</div>
+            <div class="section-content">
+                <div class="bullet">50.8μm 두께 카프톤 막 사용한 전개 시험</div>
+                <div class="bullet">중력 오프로드 시스템 활용하여 지상 시험</div>
+                <div class="bullet">총 8회 시험 중 5회 성공적 전개 달성</div>
+                <div class="bullet">최대 전개 토크 13.3mN-m 확인</div>
+                <div class="bullet">초기 설계 대비 4% 미만의 버클링 강도 감소</div>
+                <div class="bullet">실험 시 중력 및 기생 부하의 영향 확인</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Discussion: 결과의 해석</div>
+            <div class="section-content">
+                <div class="bullet">테이프 스프링의 동기적 전개 민감성 확인</div>
+                <div class="bullet">중력 오프로드 시스템 필요성 인지</div>
+                <div class="bullet">테이프 스프링 끝단 설계의 중요성 강조</div>
+                <div class="bullet">실제 우주 환경에서 동작을 위한 추가적 설계 요소 필요</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Conclusion: 최종 요약</div>
+            <div class="section-content">
+                <div class="bullet">유연 복합재료 테이프 스프링을 활용한 효과적인 구조 입증</div>
+                <div class="bullet">복잡성과 비용 감소 가능성 제시</div>
+                <div class="bullet">향후 미세 중력 환경에서의 시험 제안</div>
+                <div class="bullet">실제 우주임무를 위한 추가 연구 필요성 강조</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
