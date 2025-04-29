@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Noto Sans KR', 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slide {
+            width: 1680px;
+            min-height: 720px;
+            position: relative;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            margin: 20px 0;
+        }
+        .header {
+            background: #005b96;
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .title {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .authors {
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+        .journal {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .summary-container {
+            background: #f0f5fa;
+            padding: 12px 30px;
+            border-bottom: 1px solid #e1e5e8;
+            max-width: 100%;
+        }
+        .summary-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #005b96;
+        }
+        .summary {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 15px;
+            padding: 15px;
+            flex: 1;
+        }
+        .section {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            max-height: 320px;
+            overflow-y: auto;
+        }
+        .section-title {
+            color: #005b96;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #005b96;
+        }
+        .section-content {
+            font-size: 13px;
+            line-height: 1.6;
+            overflow-y: visible;
+        }
+        .term {
+            font-weight: bold;
+            color: #005b96;
+        }
+        .bullet {
+            margin-left: 8px;
+            text-indent: -8px;
+            padding-left: 8px;
+            margin-bottom: 6px;
+        }
+        .bullet:before {
+            content: "• ";
+            color: #005b96;
+        }
+        .eng {
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <div class="title">Multidisciplinary Design Optimization of an Active Debris Removal Mission Architecture via Electric Propulsion</div>
+            <div class="authors">Giuliana C. Hofheins, Elliot Kann, Alexander Mayo-Smith, Maha N. Haji &amp; Elaine M. Petro</div>
+            <div class="journal">Cornell University · AIAA SCITECH 2024 Forum · 8–12 January 2024</div>
+        </div>
+
+        <div class="summary-container">
+            <div class="summary-title">논문 요약</div>
+            <div class="summary">
+                • 본 논문은 수명주기비용(<span class="eng">Life Cycle Cost</span>)과 미션 시간(<span class="eng">Mission Time</span>)을 최적화하는 다목적 설계 최적화 프레임워크를 제시한다. citeturn0file0<br>
+                • 태양동기궤도(<span class="eng">Sun-Synchronous Orbit</span>)에 위치한 22개의 Zenit-II 잔해 제거를 목표로 지속 저추력 연속 추진을 적용한다. citeturn0file0<br>
+                • 유전 알고리즘(<span class="eng">Genetic Algorithm</span>) 기반 단일/다목적 최적화를 수행하여 비용과 시간 간 균형을 분석한다. citeturn0file0<br>
+                • 최적 설계 결과, 5.34 kW 제논(<span class="eng">Xenon</span>) Hall 추진기 사용 시 4.12년, 3.54억 달러 비용으로 잔해 제거가 가능함을 보였다. citeturn0file0<br>
+                • 크립톤(<span class="eng">Krypton</span>) 대안도 경제적으로 타당함을 확인하였다. citeturn0file0
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <div class="section-title">Introduction: 연구 동기</div>
+                <div class="section-content">
+                    <div class="bullet">고위험 궤도 데브리(<span class="eng">orbital debris</span>)가 기상·통신·관측 위성을 위협 → Kessler 증후군 위험 증가 citeturn0file0</div>
+                    <div class="bullet">태양동기궤도(SSO)에 고농도로 분포된 대형 잔해 제거 필요 citeturn0file0</div>
+                    <div class="bullet">수명주기비용(LCC) 최소화 및 미션 시간 단축의 상충관계 탐색 citeturn0file0</div>
+                    <div class="bullet">전기추진(<span class="eng">Electric Propulsion</span>) 시스템의 고비추력 장점 활용 citeturn0file0</div>
+                    <div class="bullet">제논(<span class="eng">Xenon</span>) 가격 변동성 및 대체 추력제안 필요 citeturn0file0</div>
+                    <div class="bullet">유전 알고리즘을 통한 이산·범주형 변수 최적화 가능성 제시 citeturn0file0</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Related Works: 관련 연구</div>
+                <div class="section-content">
+                    <div class="bullet">Liou [1]: 궤도 잔해 제거의 긴급성 강조 및 Kessler 증후군 시나리오 분석 citeturn0file0</div>
+                    <div class="bullet">Braun et al. [2]: Zenit-II 상단단 제거를 위한 개념 연구 제시 citeturn0file0</div>
+                    <div class="bullet">Covello [12]: 전기추진 적용 시스템 공학 접근법 citeturn0file0</div>
+                    <div class="bullet">Liu et al. [9]: ΔV 최소화를 위한 다목적 경로 최적화 연구 citeturn0file0</div>
+                    <div class="bullet">Marcus &amp; Sedwick [11]: 유전 알고리즘 기반 ADR 기술 비용·위험 평가 citeturn0file0</div>
+                    <div class="bullet">Tan et al. [13]: 소형 위성용 전기추진 시스템 트레이드 스터디 citeturn0file0</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Method: 새로운 접근 방법</div>
+                <div class="section-content">
+                    <div class="bullet">모듈형 다중 하위시스템 구조 설계(제어, 열·전력·추진·비용 모듈) citeturn0file0</div>
+                    <div class="bullet">MATLAB 기반 계층형 시뮬레이션 구현 citeturn0file0</div>
+                    <div class="bullet">Fractional Factorial DOE 기법으로 설계 공간 샘플링 citeturn0file0</div>
+                    <div class="bullet">단일 목적 최적화: 유전 알고리즘(300 세대, 인구 200, 돌연변이율 0.0001) 적용 citeturn0file0</div>
+                    <div class="bullet">다목적 최적화: 가중합 유전 알고리즘(λ 단계 0~1, Δλ=0.0003) 적용 citeturn0file0</div>
+                    <div class="bullet">제논·크립톤·아르곤 대체 추진제 비교 분석 citeturn0file0</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Experiment: 실험 방법과 결과</div>
+                <div class="section-content">
+                    <div class="bullet">DOE 523개 실험 수행, 비용 분포: 4.21억~19.52억 달러 citeturn0file0</div>
+                    <div class="bullet">주요 인자(ndebris, Ppropulsion) 비용 영향도 분석 citeturn0file0</div>
+                    <div class="bullet">단일 목적 최적화 결과: 2대 위성, 5.34 kW 제논 Hall 추진기, 비용 3.54억 달러 citeturn0file0</div>
+                    <div class="bullet">비용 증가 시 제논 대 크립톤 경제성 비교: 40M 달러 차이 citeturn0file0</div>
+                    <div class="bullet">다목적 Pareto 전선 도출: 비용·시간 절충 설계 200개 식별 citeturn0file0</div>
+                    <div class="bullet">최단 미션 시간 설계: 27.7 kW 제논 Hall, 2개월, 비용 20억 달러 citeturn0file0</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Discussion: 결과의 해석</div>
+                <div class="section-content">
+                    <div class="bullet">제논 추진기의 높은 비추력 성능이 비용 우위 확보에 기여 citeturn0file0</div>
+                    <div class="bullet">ndebris 증가 시 비용 절감 효과 확인 citeturn0file0</div>
+                    <div class="bullet">고전력 추력 시스템과 경량화 질량 균형 필요 citeturn0file0</div>
+                    <div class="bullet">크립톤 기반 시스템이 제논 대비 경제적 대안 가능성 citeturn0file0</div>
+                    <div class="bullet">위성 수 증가 시 DDT&amp;E 비용 증가 및 운영비 절감 효과 상쇄 citeturn0file0</div>
+                    <div class="bullet">수집 메커니즘·드래그 영향 고려 필요성 citeturn0file0</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Conclusion: 최종 요약</div>
+                <div class="section-content">
+                    <div class="bullet">전기추진 기반 ADR 설계 최적화 프레임워크 유효성 입증 citeturn0file0</div>
+                    <div class="bullet">유전 알고리즘 적용으로 다목적 목표 균형 설계 가능 citeturn0file0</div>
+                    <div class="bullet">5.34 kW 제논 Hall 추진기·2기 위성 조합 권장 설계 citeturn0file0</div>
+                    <div class="bullet">크립톤 대안 시스템도 비용 차이 미미 citeturn0file0</div>
+                    <div class="bullet">향후 드래그 모델·수집 메커니즘 추가 연구 제안 citeturn0file0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
