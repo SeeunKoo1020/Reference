@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans KR', 'Arial', sans-serif;
+            margin: 0; padding: 0;
+            background: #f5f5f5; color: #333;
+            display: flex; justify-content: center; align-items: center;
+            min-height: 100vh;
+        }
+        .slide {
+            width: 1680px; min-height: 720px;
+            background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex; flex-direction: column; margin: 20px 0;
+        }
+        .header { background: #005b96; color: white; padding: 20px 30px;
+            display: flex; flex-direction: column; width: 100%; box-sizing: border-box;
+        }
+        .title { font-size: 26px; font-weight: bold; margin-bottom: 8px; }
+        .authors { font-size: 15px; margin-bottom: 4px; }
+        .journal { font-size: 14px; opacity: 0.9; }
+        .summary-container {
+            background: #f0f5fa; padding: 12px 30px;
+            border-bottom: 1px solid #e1e5e8; max-width: 100%;
+        }
+        .summary-title { font-size: 16px; font-weight: bold;
+            margin-bottom: 5px; color: #005b96;
+        }
+        .summary { font-size: 14px; line-height: 1.5; }
+        .content { display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 15px; padding: 15px; flex: 1;
+        }
+        .section {
+            background: white; border: 1px solid #e0e0e0;
+            border-radius: 6px; padding: 12px;
+            display: flex; flex-direction: column;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            max-height: 320px; overflow-y: auto;
+        }
+        .section-title { color: #005b96; font-size: 16px;
+            font-weight: bold; margin-bottom: 10px;
+            padding-bottom: 5px; border-bottom: 2px solid #005b96;
+        }
+        .section-content { font-size: 13px; line-height: 1.6; }
+        .bullet { margin-left: 8px; text-indent: -8px;
+            padding-left: 8px; margin-bottom: 6px;
+        }
+        .bullet:before { content: "• "; color: #005b96; }
+        .eng { color: #666; font-style: italic; }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <div class="title">Space deployable bistable composite structures with C-cross section based on machine learning and multi-objective optimization</div>
+            <div class="authors">Zheng Zhang, Huping Zhou, Jingya Ma, Libin Xiong, Shouzhi Ren, Min Sun*, Huaping Wu, Shaofei Jiang</div>
+            <div class="journal">Composite Structures 297 (2022) 115983 · Available online 9 July 2022</div>
+        </div>
+        <div class="summary-container">
+            <div class="summary-title">논문 요약</div>
+            <div class="summary">
+                • C-단면을 갖는 양안정(<span class="eng">bistable</span>) 복합소재 전개 구조를 위한 데이터 기반 최적화 프레임워크 제시 citeturn3file0<br>
+                • 유한요소법(<span class="eng">FEM</span>)으로 스냅-스루 및 감김 과정을 시뮬레이션, 기계적 응답 획득 citeturn3file0<br>
+                • 라틴 초격자 샘플링, 응답표면법(<span class="eng">RSM</span>) 및 NSGA-II를 결합한 다목적 최적화 수행 citeturn3file0<br>
+                • 스냅 트리거 힘(F1) 최대화, 감김 유도 힘(F2) 최소화, 인장 강성(g1) 최대화를 목표로 설계변수 최적화 citeturn3file0<br>
+                • 실험 검증: 세 가지 시편에서 5–20% 이내 오차로 모델 신뢰성 확인 citeturn3file0
+            </div>
+        </div>
+        <div class="content">
+            <div class="section">
+                <div class="section-title">Introduction: 연구 동기</div>
+                <div class="section-content">
+                    <div class="bullet">양안정 복합 튜브는 저장 효율과 전개 강성 확보에 유리, 롤-아웃(<span class="eng">roll-out</span>) 솔라 어레이 지지체로 기대 citeturn3file0</div>
+                    <div class="bullet">기하학적 비선형 성질 활용, 별도의 액츄에이터 없이 자가 전개 가능 citeturn3file0</div>
+                    <div class="bullet">최적 설계 시 스냅-스루 힘과 감김 힘, 인장 강성 간 상충 고려 필요 citeturn3file0</div>
+                    <div class="bullet">기존 연구: 단일 목적 유전 알고리즘, 응답 표면법 최적화 사례 citeturn3file0</div>
+                    <div class="bullet">본 연구: 데이터 기반 다목적 프레임워크로 설계변수(β, t, R, H) 최적화 citeturn3file0</div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="section-title">Mechanical behavior: 전개 거동 분석</div>
+                <div class="section-content">
+                    <div class="bullet">C-단면 복합 튜브 모델: 초기 반경 R, 두께 t, 길이 H, 파이각 θ 변수 설정 citeturn3file0</div>
+                    <div class="bullet">스냅-스루 과정: FEA explicit solver로 변형력-변위 곡선 도출, θ 증가 시 임계 스냅 힘 감소 관찰 citeturn3file0</div>
+                    <div class="bullet">감김 과정: 강체판 압입 후 완전 감김 전개, 안정 2상태 확인 citeturn3file0</div>
+                    <div class="bullet">기계적 응답: 스냅-스루 힘 F1, 감김 힘 F2, 인장 강성 g1, 감김 반경 R2 추출 citeturn3file0</div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="section-title">Optimization framework: 데이터 기반 최적화</div>
+                <div class="section-content">
+                    <div class="bullet">OLHS 100개 점 DoE 수행, Design vars: β∈[150,240]°, t∈[0.08,0.2]mm, H∈[400,800]mm, θ∈[25,55]° citeturn3file0</div>
+                    <div class="bullet">응답표면법(RSM): 선형·이차 다항식 회귀로 g1,F1,F2,R2 근사 모델 구축, 최대 상대오차<0.3, R2>0.9 확보 citeturn3file0</div>
+                    <div class="bullet">NSGA-II 적용: 인구 120, 세대 40, 목표: maximize [g1,F1], minimize F2, constraint |R1-R2|≤5mm citeturn3file0</div>
+                    <div class="bullet">Pareto front 도출 후 가중합(Trigger/Driving Force 0.7, Tensile Stiffness 0.3)으로 최종 3개 설계 선택 citeturn3file0</div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="section-title">Experimental validation: 실험 검증</div>
+                <div class="section-content">
+                    <div class="bullet">세 시편 제작: [β,t,H,θ] = { (230°,0.1mm,450mm,37°), (220°,0.1mm,500mm,40°), (230°,0.2mm,600mm,39°) } citeturn3file0</div>
+                    <div class="bullet">실험 vs FEA: 스냅 힘·감김 힘·인장 강성·R2 비교, 최대 RE ≤20%로 모델 신뢰성 확인 citeturn3file0</div>
+                    <div class="bullet">구체적 오차: 스냅 15–20%, 감김 4–8%, 강성 2–8%, R2 4–6% citeturn3file0</div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="section-title">Conclusion: 최종 요약</div>
+                <div class="section-content">
+                    <div class="bullet">데이터 기반 다목적 프레임워크로 C-단면 양안정 복합 튜브의 최적 설계 달성 citeturn3file0</div>
+                    <div class="bullet">F1↑, F2↓, g1↑ 동시 만족하는 Pareto 솔루션 탐색 및 실험 검증 citeturn3file0</div>
+                    <div class="bullet">파라미터 분석으로 θ가 R2에 지배적 영향, 다른 변수는 상대적 영향 작음 규명 citeturn3file0</div>
+                    <div class="bullet">향후 대형 롤-아웃 솔라 어레이 지지체 설계 적용 계획 제시 citeturn3file0아}
+                </div>
+            </div>
+        </div>
+    </div>
+</html>
