@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Noto Sans KR', 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slide {
+            width: 1680px;
+            min-height: 720px;
+            position: relative;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            margin: 20px 0;
+        }
+        .header {
+            background: #005b96;
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .title {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .authors {
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+        .journal {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .summary-container {
+            background: #f0f5fa;
+            padding: 12px 30px;
+            border-bottom: 1px solid #e1e5e8;
+            max-width: 100%;
+        }
+        .summary-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #005b96;
+        }
+        .summary {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 15px;
+            padding: 15px;
+            flex: 1;
+        }
+        .section {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            max-height: 320px;
+            overflow-y: auto;
+        }
+        .section-title {
+            color: #005b96;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #005b96;
+        }
+        .section-content {
+            font-size: 13px;
+            line-height: 1.6;
+            overflow-y: visible;
+        }
+        .bullet {
+            margin-left: 8px;
+            text-indent: -8px;
+            padding-left: 8px;
+            margin-bottom: 6px;
+        }
+        .bullet:before {
+            content: "• ";
+            color: #005b96;
+        }
+        .eng {
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <div class="title">Machine learning-based optimization design of bistable curved shell structures with variable thickness</div>
+            <div class="authors">Junbang Liu, Jinke Chang, Jizhou Yu, Wenhua Zhang &amp; Shiqing Huang</div>
+            <div class="journal">Structures 52, 175–186 (2023) · Available online 6 April 2023 · Elsevier Ltd.</div>
+        </div>
+
+        <div class="summary-container">
+            <div class="summary-title">논문 요약</div>
+            <div class="summary">
+                • 곡면 셸(<span class="eng">curved shell</span>) 구조는 복잡한 기하학적 비선형성(<span class="eng">geometric nonlinearity</span>)으로 성능 예측이 어려움 citeturn1file0<br>
+                • 머신러닝(<span class="eng">Machine Learning</span>) 모델로 두께 분포와 이중 안정성 지표인 역 스냅력(<span class="eng">backward snapping force</span>) 간 매핑 관계 학습 citeturn1file0<br>
+                • ABAQUS FEA와 완전 연결 신경망(<span class="eng">Fully Connected Neural Network</span>) 결합으로 변수 두께 최적화 수행 citeturn1file0<br>
+                • self-learning 최적화 루프를 통해 균일 두께 대비 ≈1.7배 높은 스냅력 달성 citeturn1file0<br>
+                • ML 기반 역설계 방법의 범용성 및 메타물질(<span class="eng">metamaterials</span>) 설계 적용 가능성 제시 citeturn1file0
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <div class="section-title">Introduction: 연구 동기</div>
+                <div class="section-content">
+                    <div class="bullet">곡면 셸 구조의 산업적 응용: 항공우주, 차량, 압력용기 등 citeturn1file0</div>
+                    <div class="bullet">기하학적 비선형성으로 전통 분석·실험 최적화 한계 citeturn1file0</div>
+                    <div class="bullet">이중 안정성(<span class="eng">bistability</span>) 셸의 에너지 흡수·변형 활용 가능성 citeturn1file0</div>
+                    <div class="bullet">두께 분포 변경을 통한 기계적 특성 제어 필요성 citeturn1file0</div>
+                    <div class="bullet">역 스냅력 최적화 지표 설정(B < 0일 때 이중 안정성) citeturn1file0</div>
+                    <div class="bullet">FEA와 ML 결합으로 대규모 설계 공간 효율적 탐색 citeturn1file0</div>
+                    <div class="bullet">ML 기반 접근법의 설계 자동화·확장성 강조 citeturn1file0</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Related Works: 관련 연구</div>
+                <div class="section-content">
+                    <div class="bullet">Civalek et al.: GDQ·DSC 등 쉘 수치 해석 기법 연구 citeturn1file0</div>
+                    <div class="bullet">Stegmann et al.: 이산 재료 최적화(DMO) 통한 쉘 강성 개선 citeturn1file0</div>
+                    <div class="bullet">Shimoda et al.: 자유형상(shape) 쉘 최적화 방법 제안 citeturn1file0</div>
+                    <div class="bullet">Ant Colony, PSO 기반 토폴로지 최적화 사례 citeturn1file0</div>
+                    <div class="bullet">Level Set 외 전통 기법의 계산 비용·제약 문제 citeturn1file0</div>
+                    <div class="bullet">Wu et al., Hanakata et al., Liu et al.: ML 기반 메타·빔 최적화 연구 citeturn1file0</div>
+                    <div class="bullet">Wang et al., Mosavi et al.: ML 역설계 및 유체 예측 사례 citeturn1file0</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Method: 새로운 접근 방법</div>
+                <div class="section-content">
+                    <div class="bullet">20개 세그먼트 변수 두께 곡면 셸 모델링(Eq.(1), L=60mm, h=8mm) citeturn1file0</div>
+                    <div class="bullet">FAE: ABAQUS-Python, S4R 쉘 요소, Mesh 0.5mm, 316L 스틸 재료 citeturn1file0</div>
+                    <div class="bullet">ML 모델: 완전 연결 신경망(BPNN), 9단계 데이터셋(10^4~9×10^4) 구축 citeturn1file0</div>
+                    <div class="bullet">데이터 전처리: 3σ 아웃라이어 제거, 표준화(X*) 수행 citeturn1file0</div>
+                    <div class="bullet">하이퍼파라미터: 은닉층 1개(node=960), activation=PReLU, optimizer=Adam 등 citeturn1file0</div>
+                    <div class="bullet">Self-learning 최적화 루프: 상위100+랜덤900 반복, 10^4 사이클 수렴 citeturn1file0</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Experiment: 실험 방법과 결과</div>
+                <div class="section-content">
+                    <div class="bullet">FEA 속도: 20s/모델, 총 450k s 계산 citeturn1file0</div>
+                    <div class="bullet">ML 예측 속도: 10^-4s/샘플, 10^6배 가속화 citeturn1file0</div>
+                    <div class="bullet">모델 정확도: R2>0.95, 과적합 없음(MSE 기준) citeturn1file0</div>
+                    <div class="bullet">최적화 결과: 균일 두께 대비 역 스냅력 약1.7배 증가 citeturn1file0</div>
+                    <div class="bullet">두께 분포 패턴: [thin,thin,thick,thin,thin], [thick,thin,thick,thin,thick] citeturn1file0</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Discussion: 결과의 해석</div>
+                <div class="section-content">
+                    <div class="bullet">ML·Self-learning 루프의 계산 효율성 및 확장성 검토 citeturn1file0</div>
+                    <div class="bullet">반복 시 최적화 속도 감소 및 수렴 특성 분석 citeturn1file0</div>
+                    <div class="bullet">두께 분포 패턴: 굽힘 vs 압축 에너지 관점 해석 citeturn1file0</div>
+                    <div class="bullet">모듈화 메타물질 설계 확장 가능성 제시 citeturn1file0</div>
+                    <div class="bullet">전통 기법 대비 계산 비용 절감·성능 향상 검증 citeturn1file0</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">Conclusion: 최종 요약</div>
+                <div class="section-content">
+                    <div class="bullet">ML 역설계로 변수 두께 곡면 셸 최적화 성공 citeturn1file0</div>
+                    <div class="bullet">균일 두께 대비 스냅력 170% 증가, self-learning 루프 활용 citeturn1file0</div>
+                    <div class="bullet">예측·최적화 속도 10^6배 향상 확인 citeturn1file0</div>
+                    <div class="bullet">하이퍼파라미터·데이터 크기 선택 중요성 강조 citeturn1file0</div>
+                    <div class="bullet">복합 구조·메타물질 설계 적용 여지도 제시 citeturn1file0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
