@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans KR', 'Arial', sans-serif;
+            margin: 0; padding: 0;
+            background: #f5f5f5; color: #333;
+            display: flex; justify-content: center; align-items: center;
+            min-height: 100vh;
+        }
+        .slide {
+            width: 1680px; min-height: 720px;
+            background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex; flex-direction: column; margin: 20px 0;
+        }
+        .header { background: #005b96; color: white; padding: 20px 30px;
+            display: flex; flex-direction: column; width: 100%; box-sizing: border-box;
+        }
+        .title { font-size: 26px; font-weight: bold; margin-bottom: 8px; }
+        .authors { font-size: 15px; margin-bottom: 4px; }
+        .journal { font-size: 14px; opacity: 0.9; }
+        .summary-container {
+            background: #f0f5fa; padding: 12px 30px;
+            border-bottom: 1px solid #e1e5e8; max-width: 100%;
+        }
+        .summary-title { font-size: 16px; font-weight: bold;
+            margin-bottom: 5px; color: #005b96;
+        }
+        .summary { font-size: 14px; line-height: 1.5; }
+        .content { display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 15px; padding: 15px; flex: 1;
+        }
+        .section {
+            background: white; border: 1px solid #e0e0e0;
+            border-radius: 6px; padding: 12px;
+            display: flex; flex-direction: column;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            max-height: 320px; overflow-y: auto;
+        }
+        .section-title { color: #005b96; font-size: 16px;
+            font-weight: bold; margin-bottom: 10px;
+            padding-bottom: 5px; border-bottom: 2px solid #005b96;
+        }
+        .section-content { font-size: 13px; line-height: 1.6; }
+        .bullet { margin-left: 8px; text-indent: -8px;
+            padding-left: 8px; margin-bottom: 6px;
+        }
+        .bullet:before { content: "• "; color: #005b96; }
+        .eng { color: #666; font-style: italic; }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <div class="title">Optimization design method for kirigami-inspired space deployable structures with cylindrical surfaces</div>
+            <div class="authors">Cheng Wang, Jun-lan Li &amp; Da-wei Zhang</div>
+            <div class="journal">Applied Mathematical Modelling 89 (2021) 1575–1598 · Elsevier · Available online 6 August 2020</div>
+        </div>
+        <div class="summary-container">
+            <div class="summary-title">논문 요약</div>
+            <div class="summary">
+                • 새로운 두께 있는 키리가미(<span class="eng">kirigami</span>) 네트워크를 제안하여 단일 자유도(<span class="eng">DOF</span>)와 대형 전개비(<span class="eng">deployment ratio</span>)를 갖는 실험 모델 설계 방법 제시 citeturn2file0<br>
+                • 레일-플레인 대칭 Sym–Kiri 단위 모델 및 네트워크의 운동학·이동도 분석으로 전개 거동 규명 citeturn2file0<br>
+                • 실물 모델 제작 방법과 전개표면을 설명하는 수학 모델 구축 citeturn2file0<br>
+                • 파라메트릭 최적화(유전 알고리즘)로 원통형(<span class="eng">cylindrical</span>) 곡면 배치 구조 설계 citeturn2file0<br>
+                • 포물선 및 원형 원통 안테나 프로토타입 제작으로 설계 기법 검증 citeturn2file0
+            </div>
+        </div>
+        <div class="content">
+            <div class="section">
+                <div class="section-title">Introduction: 연구 동기</div>
+                <div class="section-content">
+                    <div class="bullet">우주 구조물 전개의 대형 전개비·신뢰성 요구 증대 citeturn2file0</div>
+                    <div class="bullet">전통 기법(오리카미·오버컨스트레인드 링키지) 한계: 두께·DOF·곡면 형상 제한 citeturn2file0</div>
+                    <div class="bullet">키리가미(<span class="eng">kirigami</span>) 절개 기법으로 DOF 유지하며 두께 패널 전개 가능성 탐색 citeturn2file0</div>
+                    <div class="bullet">Curved surface, 특히 원통형 전개가 안테나·태양전지 패널에 유용 citeturn2file0</div>
+                    <div class="bullet">키리가미 네트워크로 곡면 전개 구조 설계 방법 필요성 대두 citeturn2file0</div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="section-title">Related Works: 관련 연구</div>
+                <div class="section-content">
+                    <div class="bullet">오버컨스트레인드 링키지(Bennett, Bricard 등) 이용 단일 DOF 메커니즘 citeturn2file0</div>
+                    <div class="bullet">오리카미(<span class="eng">origami</span>) 기반 전개: 두께 보정 기법(offset, axis-shift 등) citeturn2file0</div>
+                    <div class="bullet">키리가미 응용: 메타물질·로봇 핸드·제로 두께 deployable 구조 citeturn2file0</div>
+                    <div class="bullet">두께 있는 키리가미 모델: 6R Waldron 링키지 등가 제안 citeturn2file0</div>
+                    <div class="bullet">곡면 전개 구조 사례: parabolic deployable flasher, Bennett 네트워크 안테나 citeturn2file0</div>
+                    <div class="bullet">원통형 전개: Bennett linkage 네트워크 배치 연구 citeturn2file0</div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="section-title">Method: 새로운 접근 방법</div>
+                <div class="section-content">
+                    <div class="bullet">Sym–Kiri 단위: 레일-플레인 대칭 6패널∙6힌지 모델 정의 citeturn2file0</div>
+                    <div class="bullet">D–H 표기법으로 기하·핀치 간격 등 운동학적 매개변수 설정 citeturn2file0</div>
+                    <div class="bullet">네트워크 구성: 인접 유닛 공유 힌지로 무한 확장 가능, 네트워크 운동학 분석 citeturn2file0</div>
+                    <div class="bullet">물리모델 제작: 두께·슬릿 처리, 물질 제거 및 추가 방식 제시 citeturn2file0</div>
+                    <div class="bullet">전개표면 수학모델: 크리쓰 함수 F(x) 및 설계변수 X(α,ϕv,l1,l2,B) 정식화 citeturn2file0</div>
+                    <div class="bullet">GA 기반 최적화: 설계영역 제약(크기,전개비), 잔차 e 최소화 목표 설정 citeturn2file0</div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="section-title">Experiment: 실험 방법과 결과</div>
+                <div class="section-content">
+                    <div class="bullet">GA 파라미터: 인구 40, 교차율 0.8, 돌연변이율 0.1, 세대 40 citeturn2file0</div>
+                    <div class="bullet">케이스1(p=208.33), 케이스2(R=250) 제약 조건별 최적 X 획득 citeturn2file0</div>
+                    <div class="bullet">잔차 e 수렴: 1134→62.8 mm², 1356→166.4 mm² citeturn2file0</div>
+                    <div class="bullet">프로토타입: 파라볼릭 및 원형 원통 안테나 3D프린팅 제작 citeturn2file0</div>
+                    <div class="bullet">전개 ∙ 접힘 확인: 1 DOF 전개 거동, 목표 곡면 근접 실증 citeturn2file0</div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="section-title">Discussion: 결과의 해석</div>
+                <div class="section-content">
+                    <div class="bullet">키리가미 네트워크로 Thick-panel deployable 구조 설계 타당성 확인 citeturn2file0</div>
+                    <div class="bullet">운동학 단일 DOF 유지∙실제 제작 용이성 장점 분석 citeturn2file0</div>
+                    <div class="bullet">GA 최적화로 목표 곡면 근접도 향상 및 설계 변수 영향도 규명 citeturn2file0</div>
+                    <div class="bullet">제한: 역학 분석∙힌지 강성∙제작 오차 고려 필요 citeturn2file0</div>
+                    <div class="bullet">차기 연구: 동역학·내구성·대형 연결체 적용 검토 제안 citeturn2file0</div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="section-title">Conclusion: 최종 요약</div>
+                <div class="section-content">
+                    <div class="bullet">키리가미 네트워크 기반 곡면 deployable 구조 설계 프레임워크 확립 citeturn2file0</div>
+                    <div class="bullet">운동도·이동도 분석으로 1 DOF, 대형 전개비 달성 검증 citeturn2file0</div>
+                    <div class="bullet">전개표면 수학 모델∙GA 최적화 기법으로 목표 곡면 근접도 확보 citeturn2file0</div>
+                    <div class="bullet">파라볼릭·원형 원통 안테나 프로토타입 제작으로 실용성 검증 citeturn2file0</div>
+                    <div class="bullet">향후 동역학·대형 적용·제작 오차 보정 연구 필요성 강조 citeturn2file0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
