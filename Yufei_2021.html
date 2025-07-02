@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans KR', 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slide {
+            width: 1680px;
+            min-height: 720px;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            margin: 20px 0;
+        }
+        .header {
+            background: #005b96;
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            flex-direction: column;
+        }
+        .title {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .authors { font-size: 15px; margin-bottom: 4px; }
+        .journal { font-size: 14px; opacity: 0.9; }
+        .summary-container {
+            background: #f0f5fa;
+            padding: 12px 30px;
+            border-bottom: 1px solid #e1e5e8;
+        }
+        .summary-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #005b96;
+        }
+        .summary { font-size: 14px; line-height: 1.5; }
+        .content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 15px;
+            padding: 15px;
+            flex: 1;
+        }
+        .section {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            max-height: 320px;
+            overflow-y: auto;
+        }
+        .section-title {
+            color: #005b96;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #005b96;
+        }
+        .section-content { font-size: 13px; line-height: 1.6; }
+        .term { font-weight: bold; color: #005b96; }
+        .bullet {
+            margin-left: 8px;
+            text-indent: -8px;
+            padding-left: 8px;
+            margin-bottom: 6px;
+        }
+        .bullet:before { content: "\2022 "; color: #005b96; }
+        .eng { color: #666; font-style: italic; }
+    </style>
+</head>
+<body>
+<div class="slide">
+    <div class="header">
+        <div class="title">Multiscale Simulation of Deployable Composite Structures</div>
+        <div class="authors">Yufei Long, Orzuri Rique Garaizar, Juan M. Fernandez, Andrew C. Bergan, Wenbin Yu</div>
+        <div class="journal">AIAA SciTech Forum 2021, DOI: 10.2514/6.2021-0199</div>
+    </div>
+    <div class="summary-container">
+        <div class="summary-title">논문 요약</div>
+        <div class="summary">
+            이 논문은 TP-HSC(초바탕 고동성 복합재) 기본의 전계형 복합 구조물을 통해 전계 조절을 위해 시뮬레이션 과정을 여담한 단계별 모양차 시뮬레이션 프레임워크를 제안한다. SwiftComp와 UGENS와 같은 유형의 사용자 서비스를 개발하여 Abaqus에서 시뮬레이션할 수 있는 진보한 보컬 구조적 지사 경로를 갖는다. CBT 테스트에서 복합 구조물의 강소력과 방지력을 조정할 수 있고, 데이터 보조를 위해 컨트롤테이션 및 고정화 진행이 가능하다. 이는 또한 lenticular boom의 파출, 고일막기, 저장, 구장, 회복 과정을 반영할 수 있는 전차 시뮬레이션으로 연결되는 기술적 가치를 가진다.
+        </div>
+    </div>
+    <div class="content">
+        <div class="section">
+            <div class="section-title">Introduction: 연구 동기</div>
+            <div class="section-content">
+                [업데이트 예정]
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-title">Related Works: 관련 연구</div>
+            <div class="section-content">
+                [업데이트 예정]
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-title">Method: 새로운  \uac 접근 방법</div>
+            <div class="section-content">
+                [업데이트 예정]
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-title">Experiment: 실험 방법과 결과</div>
+            <div class="section-content">
+                [업데이트 예정]
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-title">Discussion: 결과의 해석</div>
+            <div class="section-content">
+                [업데이트 예정]
+            </div>
+        </div>
+        <div class="section">
+            <div class="section-title">Conclusion: 최종 요약</div>
+            <div class="section-content">
+                [업데이트 예정]
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
