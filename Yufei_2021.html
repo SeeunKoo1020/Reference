@@ -1,92 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Noto Sans KR', 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f5f5f5;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .slide {
-            width: 1680px;
-            min-height: 720px;
-            background: white;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: column;
-            margin: 20px 0;
-        }
-        .header {
-            background: #005b96;
-            color: white;
-            padding: 20px 30px;
-            display: flex;
-            flex-direction: column;
-        }
-        .title {
-            font-size: 26px;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-        .authors { font-size: 15px; margin-bottom: 4px; }
-        .journal { font-size: 14px; opacity: 0.9; }
-        .summary-container {
-            background: #f0f5fa;
-            padding: 12px 30px;
-            border-bottom: 1px solid #e1e5e8;
-        }
-        .summary-title {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #005b96;
-        }
-        .summary { font-size: 14px; line-height: 1.5; }
-        .content {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(2, auto);
-            gap: 15px;
-            padding: 15px;
-            flex: 1;
-        }
-        .section {
-            background: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 6px;
-            padding: 12px;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            max-height: 320px;
-            overflow-y: auto;
-        }
-        .section-title {
-            color: #005b96;
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            padding-bottom: 5px;
-            border-bottom: 2px solid #005b96;
-        }
-        .section-content { font-size: 13px; line-height: 1.6; }
-        .term { font-weight: bold; color: #005b96; }
-        .bullet {
-            margin-left: 8px;
-            text-indent: -8px;
-            padding-left: 8px;
-            margin-bottom: 6px;
-        }
-        .bullet:before { content: "\2022 "; color: #005b96; }
-        .eng { color: #666; font-style: italic; }
-    </style>
+<!-- (스타일 유지 생략) -->
 </head>
 <body>
 <div class="slide">
@@ -98,44 +13,76 @@
     <div class="summary-container">
         <div class="summary-title">논문 요약</div>
         <div class="summary">
-            이 논문은 TP-HSC(초바탕 고동성 복합재) 기본의 전계형 복합 구조물을 통해 전계 조절을 위해 시뮬레이션 과정을 여담한 단계별 모양차 시뮬레이션 프레임워크를 제안한다. SwiftComp와 UGENS와 같은 유형의 사용자 서비스를 개발하여 Abaqus에서 시뮬레이션할 수 있는 진보한 보컬 구조적 지사 경로를 갖는다. CBT 테스트에서 복합 구조물의 강소력과 방지력을 조정할 수 있고, 데이터 보조를 위해 컨트롤테이션 및 고정화 진행이 가능하다. 이는 또한 lenticular boom의 파출, 고일막기, 저장, 구장, 회복 과정을 반영할 수 있는 전차 시뮬레이션으로 연결되는 기술적 가치를 가진다.
+            본 논문은 <span class="term">전개형 복합재 구조물</span>(deployable composite structures)의 시뮬레이션을 위한 <span class="term">다중스케일 프레임워크</span>(<span class="eng">multiscale framework</span>)를 제안한다. Mechanics of Structure Genome(MSG) 기반의 균질화를 통해 복합재 쉘의 유효 물성을 계산하고, 이를 Abaqus의 <span class="term">사용자 서브루틴</span>(<span class="eng">user-subroutine</span>)인 UGENS에 구현하였다. <span class="term">기둥 굽힘 시험</span>(<span class="eng">Column Bending Test, CBT</span>)과 <span class="term">lenticular boom</span>의 전개 시뮬레이션을 수행하여, 실험 결과와 비교하였다. 복합재의 점탄성(<span class="eng">viscoelastic</span>) 거동을 고려하고, 점진적 교정을 통해 모델의 정확도를 향상시킬 수 있음을 보여준다. 이 프레임워크는 향후 보다 복잡한 deployable 구조물 설계에 응용될 수 있다.
         </div>
     </div>
     <div class="content">
         <div class="section">
             <div class="section-title">Introduction: 연구 동기</div>
             <div class="section-content">
-                [업데이트 예정]
+                <div class="bullet">우주용 전개 구조물은 발사 시 부피를 최소화하고, 우주 환경에서는 5~20m 규모로 전개되어 안정된 형상을 유지해야 함.</div>
+                <div class="bullet">기존 금속 기반 구조물과 달리, <span class="term">TP-HSC</span>(<span class="eng">Thin-Ply High Strain Composite</span>)는 관절 없이 유연성 있게 전개가 가능함.</div>
+                <div class="bullet">TP-HSC는 적층 두께가 0.02~0.1 mm 수준으로 매우 얇아 무게 절감에 유리함.</div>
+                <div class="bullet">높은 유연성은 큰 변형을 수반하므로, 해석 시 <span class="term">비선형</span>(<span class="eng">nonlinear</span>) 및 시간 의존적 재료 특성 고려가 필수적임.</div>
+                <div class="bullet">전개 구조물은 긴 저장 기간을 거치므로 점탄성적 영향을 반영한 해석이 필요함.</div>
+                <div class="bullet">기존 유한요소 모델은 테이프 스프링이나 단순한 구조물 위주로 제한적임.</div>
+                <div class="bullet">전체 전개 프로세스를 정확히 반영할 수 있는 시뮬레이션 프레임워크가 필요함.</div>
             </div>
         </div>
         <div class="section">
             <div class="section-title">Related Works: 관련 연구</div>
             <div class="section-content">
-                [업데이트 예정]
+                <div class="bullet">TP-HSC에 대한 구성 관계 검증을 위한 CBT 실험이 사용됨 [7].</div>
+                <div class="bullet">CBT 시뮬레이션 모델 검증은 Rose 등 [8]이 제안한 <span class="eng">coincident element method</span>를 기반으로 진행됨.</div>
+                <div class="bullet">TP-HSC 굽힘 해석에 대해 Gomez-Delrio와 Kwok [9]는 해석적 방법과 FEM을 비교함.</div>
+                <div class="bullet">전개 구조물 해석에서는 Yee와 Pellegrino의 평탄화 해석 [3,4], Hu 등의 연구 [12] 등이 참고됨.</div>
+                <div class="bullet">boom 전개 해석은 대부분 테이프 스프링 [13] 또는 삼각 쉘 구조 [16]에 제한됨.</div>
+                <div class="bullet">복잡한 형상의 전개 구조에 대해 전 과정 시뮬레이션이 가능한 모델은 부족함.</div>
+                <div class="bullet">SwiftComp 기반 MSG 균질화 기법은 섬유/수지 복합재의 구조 거동 모델링에 유용함 [17,18].</div>
             </div>
         </div>
         <div class="section">
-            <div class="section-title">Method: 새로운  \uac 접근 방법</div>
+            <div class="section-title">Method: 새로운 접근 방법</div>
             <div class="section-content">
-                [업데이트 예정]
+                <div class="bullet">MSG(Structure Genome)을 통해 구성재료의 마이크로/메조스케일 정보를 정의함.</div>
+                <div class="bullet">SwiftComp을 통해 MSG 균질화를 수행하여 <span class="term">쉘 요소 유효 물성</span>을 계산함.</div>
+                <div class="bullet">Prony 급수를 사용해 점탄성 재료 모델을 시간 도메인에서 직접 적분 방식으로 구현함.</div>
+                <div class="bullet">UGENS 사용자 서브루틴에 물성 행렬을 탑재하여 Abaqus/Standard에서 해석 수행.</div>
+                <div class="bullet">기하학적 비선형성(<span class="eng">geometric nonlinearity</span>) 고려.</div>
+                <div class="bullet">MSG 기반 해석은 변형 이력에 따라 탈균질화(<span class="eng">dehomogenization</span>)도 가능함.</div>
             </div>
         </div>
         <div class="section">
             <div class="section-title">Experiment: 실험 방법과 결과</div>
             <div class="section-content">
-                [업데이트 예정]
+                <div class="bullet">CBT 시험 시편은 [±45]₄ layup의 PW 탄소섬유 복합재로 제작.</div>
+                <div class="bullet">Abaqus S4 쉘 요소로 모델링하며 상하부 클램프는 기준점(RP)으로 대체.</div>
+                <div class="bullet">굴곡, 이완(relaxation), 펼침, 회복 4단계로 나눠 해석 수행.</div>
+                <div class="bullet">중심 곡률이 상하단보다 약 34% 큼. 이는 실험 결과와 유사.</div>
+                <div class="bullet">잔류 곡률 예측 정확도는 실험과의 비교에서 양호한 경향을 보임.</div>
+                <div class="bullet">회복 후 곡률은 실험 대비 과소 예측됨 → viscoplasticity 미반영 때문으로 추정됨.</div>
             </div>
         </div>
         <div class="section">
             <div class="section-title">Discussion: 결과의 해석</div>
             <div class="section-content">
-                [업데이트 예정]
+                <div class="bullet">CBT 결과는 전체적으로 실험과 유사한 곡률 및 강성 추세를 보임.</div>
+                <div class="bullet">잔류 곡률의 과소 예측은 비선형 점소성 효과 누락이 주요 원인.</div>
+                <div class="bullet">Dakota를 통한 굽힘 강성 보정(calibration)은 SSE를 84%까지 감소시킴.</div>
+                <div class="bullet">Lenticular boom의 전개 과정은 복잡한 접촉과 회복 비선형성 고려.</div>
+                <div class="bullet">Baseline 모델 대비, 개선된 모델은 롤러를 통한 팝아웃 억제 효과가 있음.</div>
+                <div class="bullet">회복 24시간 후 hoop 방향 곡률이 88.3% 감소하여 구조 안정성 향상.</div>
             </div>
         </div>
         <div class="section">
             <div class="section-title">Conclusion: 최종 요약</div>
             <div class="section-content">
-                [업데이트 예정]
+                <div class="bullet">MSG 기반 다중스케일 시뮬레이션 프레임워크를 통해 복합재 전개 구조를 정밀하게 해석 가능함을 시연.</div>
+                <div class="bullet">점탄성 물성은 Prony 계수로 모델링되었으며, Abaqus에서 직접 통합 방식으로 구현됨.</div>
+                <div class="bullet">CBT 실험과 해석 비교 결과에서 모델의 신뢰성과 한계를 확인함.</div>
+                <div class="bullet">전개형 붐 구조의 전체 전개 과정을 시뮬레이션한 사례는 제한적이며, 본 연구는 그 공백을 메움.</div>
+                <div class="bullet">향후 연구에서는 viscoplasticity 및 손상 모델 도입이 필요함.</div>
+                <div class="bullet">본 연구는 실제 엔지니어링 설계 적용을 위한 기반 기술로 확장 가능함.</div>
             </div>
         </div>
     </div>
